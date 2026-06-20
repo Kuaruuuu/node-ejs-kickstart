@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+    <h>This Page Covers PBR ( Physically Based Rendering )</h>
+
+    <p>PBR, consists of using a set of textures in the material that define specularity, glossiness. This can also be metallic / roughness.
+       for games, in common applications; MR is used. Here in my renderer I have chosen to go with metallic and glossiness but I plan to specular-glossiness workflow, when
+       I have time to write a realtime albedo to specular map converter so it gives me as the main artist of the game im also developing, less to do art wise.
+       Glossiness texture is all I need:)
+    </p>
+
+    <p>PBR is more than just textures however, it is also how light behaves, the sources of energy created here with math are manipulated in intensity, sharpness, and visibility; based off
+       what these textures define. (  float3 luminance = (((1.0 / PI) * lerp(Fd, ss, 1.0) * Cdlin * metallic ? 0.5f : 0.0171f) + specular) ) There is much unexplained here due to the large scope
+       of the math but in essence it performs as such.
+    </p>
+
+     <img src="/images/pbr.png" class="img-fluid" alt="Sample image">
+
+<%- include('../partials/footer') %>

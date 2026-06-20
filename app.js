@@ -1,5 +1,6 @@
 //include Express
 const express = require('express');
+const path = require('path');
 
 //server will listen on this port
 const port = 3000;
@@ -10,8 +11,8 @@ const app = express();
 //ejs is templating engine
 app.set('view engine','ejs');
 
-//this will allow us to serve up static files, CSS, images & JS
-app.use(express.static(__dirname + '/public'));
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 //index/home URL
 app.get('/',(req,res)=>{
@@ -25,8 +26,32 @@ app.get('/about',(req,res)=>{
     res.render('pages/about',{'title': title});
 });
 
-//Set server to listen for requests
-app.listen(port, () => {
-  console.log(`Server running at port: ${port}`);
+//gallery
+app.get('/gallery',(req,res)=>{
+    let title = "Gallery Page";
+    res.render('pages/gallery',{'title': title});
 });
 
+//pcss
+app.get('/pcss',(req,res)=>{
+    let title = "PCSS Page";
+    res.render('pages/pcss',{'title': title});
+});
+
+//pbr
+app.get('/pbr',(req,res)=>{
+    let title = "PBR Page";
+    res.render('pages/pbr',{'title': title});
+});
+
+//rendering system
+app.get('/render',(req,res)=>{
+    let title = "Renderer Page";
+    res.render('pages/render',{'title': title});
+});
+
+//Set server to listen for requests
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
